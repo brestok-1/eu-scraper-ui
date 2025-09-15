@@ -15,7 +15,9 @@ const router = createBrowserRouter([
       { path: 'job/:jobId', element: <JobDetailPage /> },
     ],
   },
-])
+], {
+  basename: '/eu-parser-ui'
+})
 
 const root = createRoot(document.getElementById('root'))
 root.render(<RouterProvider router={router} />)
