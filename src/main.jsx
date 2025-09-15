@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: '/eu-parser-ui'
+  basename: '/eu-scraper-ui'
 })
 
 const root = createRoot(document.getElementById('root'))
