@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatDateTime } from '../utils/date.js'
+import { formatDateTime, formatDateTimeCompact } from '../utils/date.js'
 import { Link } from 'react-router-dom'
 
 export function JobsTable({ jobs, isLoading }) {
@@ -9,7 +9,7 @@ export function JobsTable({ jobs, isLoading }) {
       <div className="overflow-x-auto w-full relative z-10">
         <table className="min-w-full text-sm">
           <thead>
-            <tr className="text-left text-white/70">
+            <tr className="text-left text-black/70">
               <th className="p-3">Title</th>
               <th className="p-3">Company</th>
               <th className="p-3">Location</th>
@@ -20,7 +20,7 @@ export function JobsTable({ jobs, isLoading }) {
           </thead>
           <tbody>
             {skeletonRows.map((_, idx) => (
-              <tr key={idx} className={`border-t border-white/10 ${idx % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
+              <tr key={idx} className={`border-t border-black/10 ${idx % 2 === 0 ? 'bg-black/[0.02]' : ''}`}>
                 <td className="p-3">
                   <div className="flex items-center gap-2">
                     <span className="skeleton h-4 w-48"></span>
@@ -51,7 +51,7 @@ export function JobsTable({ jobs, isLoading }) {
     <div className="overflow-x-auto w-full relative z-10">
       <table className="min-w-full text-sm">
         <thead>
-          <tr className="text-left text-white/70">
+          <tr className="text-left text-black/70">
             <th className="p-3">Title</th>
             <th className="p-3">Company</th>
             <th className="p-3">Location</th>
@@ -62,22 +62,26 @@ export function JobsTable({ jobs, isLoading }) {
         </thead>
         <tbody>
           {jobs.map((j, idx) => (
-            <tr key={j?.id ?? idx} className={`border-t border-white/10 ${idx % 2 === 0 ? 'bg-white/[0.02]' : ''} hover:bg-white/[0.06]`}>
+            <tr key={j?.id ?? idx} className={`border-t border-black/10 ${idx % 2 === 0 ? 'bg-black/[0.02]' : ''} hover:bg-black/[0.05]`}>
               <td className="p-3">
                 <div className="flex items-center gap-2">
                   {Boolean(j?.isTop5) && <span className="size-2 rounded-full bg-emerald-400"></span>}
-                  <span className="font-medium text-white/90">{j?.title || '—'}</span>
+                  <span className="font-medium text-black/90">{j?.title || '—'}</span>
                 </div>
               </td>
               <td className="p-3">{j?.company || '—'}</td>
               <td className="p-3">{j?.location || '—'}</td>
               <td className="p-3">{formatSalary(j?.salary)}</td>
-              <td className="p-3">{j?.datetimeInserted ? formatDateTime(j.datetimeInserted) : '—'}</td>
+              <td className="p-3">{j?.datetimeInserted ? (
+                <time dateTime={new Date(j.datetimeInserted).toISOString()} title={formatDateTime(j.datetimeInserted)}>
+                  {formatDateTimeCompact(j.datetimeInserted)}
+                </time>
+              ) : '—'}</td>
               <td className="p-3 text-right">
                 {j?.id ? (
-                  <Link to={`/job/${j.id}`} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 hover:border-[var(--color-primary)]">View</Link>
+                  <Link to={`/job/${j.id}`} className="px-3 py-1 rounded-lg bg-black/5 border border-black/10 hover:border-[var(--color-primary)]">View</Link>
                 ) : (
-                  <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 opacity-50">View</span>
+                  <span className="px-3 py-1 rounded-lg bg-black/5 border border-black/10 opacity-50">View</span>
                 )}
               </td>
             </tr>

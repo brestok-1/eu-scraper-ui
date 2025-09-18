@@ -12,9 +12,9 @@ export default function JobsPage() {
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div>
           <h2 className="text-2xl font-semibold">All EU Vacancies</h2>
-          <p className="text-sm text-white/70">Advanced scraping for ATS platforms and hyperscalers</p>
+          <p className="text-sm text-black/70">Advanced scraping for ATS platforms and hyperscalers</p>
         </div>
-        <button onClick={refresh} disabled={isLoading} className="px-5 py-3 rounded-xl bg-gradient-to-r from-[var(--color-primary-600)] to-[var(--color-primary)] text-black font-semibold disabled:opacity-60">Refresh</button>
+        <button onClick={refresh} disabled={isLoading} className="px-5 py-3 rounded-xl bg-gradient-to-r from-[var(--color-primary-600)] to-[var(--color-primary)] text-white font-semibold disabled:opacity-60">Refresh</button>
       </div>
 
       <div className="mt-6">

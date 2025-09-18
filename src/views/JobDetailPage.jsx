@@ -40,11 +40,11 @@ export default function JobDetailPage() {
           <span className="skeleton h-6 w-16 rounded-full"></span>
         </div>
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+          <div className="p-4 rounded-xl bg-black/5 border border-black/10">
             <div className="skeleton h-4 w-24"></div>
             <div className="skeleton h-5 w-40 mt-3"></div>
           </div>
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+          <div className="p-4 rounded-xl bg-black/5 border border-black/10">
             <div className="skeleton h-4 w-24"></div>
             <div className="skeleton h-5 w-32 mt-3"></div>
           </div>
@@ -77,7 +77,7 @@ export default function JobDetailPage() {
   if (!job) {
     return (
       <div className="glass p-6 mt-10">
-        <p className="text-white/70">Job not found.</p>
+        <p className="text-black/70">Job not found.</p>
         <Link to="/" className="inline-block mt-4 text-[var(--color-primary)]">Back to jobs</Link>
       </div>
     )
@@ -88,15 +88,15 @@ export default function JobDetailPage() {
       <div className="glass p-8">
         <div className="flex items-start justify-between gap-6">
           <div>
-            <h1 className="text-3xl font-bold text-white/90">{job?.title || '—'}</h1>
-            <p className="text-white/70 mt-2">{job?.company || '—'} • {job?.location || '—'}</p>
+            <h1 className="text-3xl font-bold text-black/90">{job?.title || '—'}</h1>
+            <p className="text-black/70 mt-2">{job?.company || '—'} • {job?.location || '—'}</p>
           </div>
-          {Boolean(job?.isTop5) && <span className="px-3 py-1 rounded-full text-xs bg-emerald-400/20 text-emerald-300">Top 5</span>}
+          {Boolean(job?.isTop5) && <span className="px-3 py-1 rounded-full text-xs bg-emerald-400/20 text-emerald-700">Top 5</span>}
         </div>
 
         <div className="mt-6 flex flex-col md:flex-row md:items-start gap-4 md:gap-8 text-sm">
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 w-full md:w-[360px]">
-            <div className="text-white/60">Salary</div>
+          <div className="p-4 rounded-xl bg-black/5 border border-black/10 w-full md:w-[360px]">
+            <div className="text-black/60">Salary</div>
             <div className="mt-1 font-semibold">
               {(() => {
                 const s = job?.salary
@@ -108,8 +108,8 @@ export default function JobDetailPage() {
               })()}
             </div>
           </div>
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 w-full md:w-[360px]">
-            <div className="text-white/60">Inserted</div>
+          <div className="p-4 rounded-xl bg-black/5 border border-black/10 w-full md:w-[360px]">
+            <div className="text-black/60">Inserted</div>
             <div className="mt-1 font-semibold">{job?.datetimeInserted ? formatDateTime(job.datetimeInserted) : '—'}</div>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function JobDetailPage() {
                 <ReactMarkdown>{job.description}</ReactMarkdown>
               </div>
             ) : (
-              <p className="mt-2 text-white/70">—</p>
+              <p className="mt-2 text-black/70">—</p>
             )}
           </div>
           <div>
@@ -132,13 +132,13 @@ export default function JobDetailPage() {
                 <ReactMarkdown>{job.requirements}</ReactMarkdown>
               </div>
             ) : (
-              <p className="mt-2 text-white/70">—</p>
+              <p className="mt-2 text-black/70">—</p>
             )}
             <div className="mt-6">
               {job?.sourceUrl ? (
                 <a href={job.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-[var(--color-primary-600)] to-[var(--color-primary)] text-black font-semibold">Open Source</a>
               ) : (
-                <span className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white/5 border border-white/10 opacity-50">Open Source</span>
+                <span className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-black/5 border border-black/10 opacity-50">Open Source</span>
               )}
             </div>
           </div>
